@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Let's Create</title>
     <style>
         /* 设置 body 和 html 的高度为 100%，允许上下滚动 */
@@ -33,6 +35,9 @@
             object-fit: contain; /* 图片保持比例，避免被拉伸 */
         }
     </style>
+
+    <!-- 默认favicon图标 -->
+    <link id="favicon" rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
     <div id="image-container"></div>
@@ -42,6 +47,23 @@
         const imagePrefix = 'page_页面_';
         const imageSuffix = '.jpg';
 
+        // 动态切换favicon闪烁效果
+        const favicon = document.getElementById('favicon');
+        let isVisible = true;
+
+        // 使用两个不同的图标来模拟闪烁
+        setInterval(() => {
+            if (isVisible) {
+                // 如果当前图标可见，显示正常的favicon
+                favicon.href = 'favicon.png';  // 正常图标
+            } else {
+                // 如果当前图标隐藏，显示透明图标（或一个空图标）
+                favicon.href = 'favicon-empty.png';  // 透明图标
+            }
+            isVisible = !isVisible;  // 切换状态
+        }, 500);  // 每500毫秒切换一次
+
+        // 创建图片
         for (let i = 1; i <= 121; i++) {
             // 创建一个 div 元素作为图片容器
             const imageItem = document.createElement('div');
