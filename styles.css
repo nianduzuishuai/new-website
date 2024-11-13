@@ -1,0 +1,11 @@
+CSS
+.mySlides {
+  display: none;
+  width: 95%; /* 设置最大宽度为 95% */
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%; /* 居中 */
+  transform: translateX(-50%); /* 居中 */
+  object-fit: cover; /* 图片缩放填充整个容器 */
+}
