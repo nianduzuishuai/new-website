@@ -47,21 +47,17 @@
         const imagePrefix = 'page_页面_';
         const imageSuffix = '.jpg';
 
-        // 动态切换favicon闪烁效果
+        // 动态切换favicon效果
         const favicon = document.getElementById('favicon');
-        let isVisible = true;
+        const faviconImages = ['favicon.png', 'favicon-empty.png', 'favicon-full.png'];
+        let currentFaviconIndex = 0;
 
-        // 使用两个不同的图标来模拟闪烁
+        // 每隔500毫秒切换一次favicon图标
         setInterval(() => {
-            if (isVisible) {
-                // 如果当前图标可见，显示正常的favicon
-                favicon.href = 'favicon.png';  // 正常图标
-            } else {
-                // 如果当前图标隐藏，显示透明图标（或一个空图标）
-                favicon.href = 'favicon-empty.png';  // 透明图标
-            }
-            isVisible = !isVisible;  // 切换状态
-        }, 500);  // 每500毫秒切换一次
+            // 切换到下一张图片
+            currentFaviconIndex = (currentFaviconIndex + 1) % faviconImages.length;
+            favicon.href = faviconImages[currentFaviconIndex];
+        }, 500);
 
         // 创建图片
         for (let i = 1; i <= 121; i++) {
